@@ -1,0 +1,12 @@
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1b5e20">
+<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2510/2510250.png">
+
+<script>
+  // Service Worker Register karne ke liye
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log("Khet-Bari App Ready!"))
+      .catch(err => console.log("SW Error:", err));
+  }
+</script>
