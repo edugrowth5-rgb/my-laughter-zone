@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanson-v2';
+const CACHE_NAME = 'hanson-v3';
 const ASSETS = [
   'index.html',
   'manifest.json',
