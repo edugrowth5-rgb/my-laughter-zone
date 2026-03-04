@@ -2,7 +2,7 @@ const CACHE_NAME = 'hanson-v3';
 const ASSETS = [
   'index.html',
   'manifest.json',
-  'https://cdn-icons-png.flaticon.com/512/1653/1653630.png'
+  '1771152787399.png'
 ];
 
 // App install hote waqt files save karna
