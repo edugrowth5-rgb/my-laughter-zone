@@ -84,13 +84,13 @@
         }
 
 /* Holi Special Tile Animation */
-.tile.holi-special {
+/* Holi Special Tile Styling */
+.card.holi-special {
     background: linear-gradient(45deg, #ff4757, #ff9f43, #feca57, #48dbfb, #ff9ff3);
     background-size: 400% 400%;
     animation: gradientShift 5s ease infinite;
     color: white;
     border: none;
-    font-weight: bold;
 }
 
 @keyframes gradientShift {
@@ -99,7 +99,119 @@
     100% { background-position: 0% 50%; }
 }
 
-.tile.holi-special i { color: white; text-shadow: 0 0 10px rgba(0,0,0,0.3); }
+/* Holi card ke andar ke text aur icon ka color white karne ke liye */
+.card.holi-special span, .card.holi-special i {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.joke-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    border-top: 1px dashed #ddd;
+    padding-top: 10px;
+}
+
+.action-btn {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: 0.2s;
+}
+
+.btn-copy { background: #f1f2f6; color: #2f3542; }
+.btn-whatsapp { background: #25D366; color: white; }
+
+.action-btn:active { transform: scale(0.95); }
+
+/* Toast Notification (Copy hone par dikhega) */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: none;
+    z-index: 10000;
+}
+
+.upload-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    text-align: center;
+    border: 2px dashed var(--primary);
+}
+
+#imagePreview {
+    display: flex;
+    flex-wrap: wrap; /* Taaki images agli line mein aa sakein */
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 120px; /* Aap apne hisab se size chota-bada kar sakte hain */
+}
+
+.user-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.upload-btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 71, 87, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.delete-btn:hover {
+    background: #ff4757;
+    transform: scale(1.1);
+}
 
         
     </style>
@@ -132,19 +244,32 @@
         </div>
 
         <div class="container">
-            <div class="grid">
-                <div class="card" onclick="openJokes('पप्पू स्पेशल', 'pappu')"><i>👦</i><span>पप्पू</span></div>
-                <div class="card" onclick="openJokes('पति-पत्नी', 'couple')"><i>💍</i><span>पति-पत्नी</span></div>
-                <div class="card" onclick="openJokes('स्कूल मस्ती', 'school')"><i>🏫</i><span>स्कूल</span></div>
-                <div class="card" onclick="openJokes('डॉक्टर-मरीज', 'doctor')"><i>🩺</i><span>डॉक्टर</span></div>
-                <div class="card" onclick="openJokes('देसी तड़का', 'desi')"><i>🇮🇳</i><span>देसी</span></div>
-                <div class="card" onclick="openJokes('शराबी भाई', 'drunk')"><i>🍺</i><span>शराबी</span></div>
-                <div class="tile holi-special" onclick="openJokes('होली स्पेशल', 'holi')">
-    <i>🎨</i><span>बुरा ना मानो होली है!</span>
+           <div class="grid">
+    <div class="card" onclick="openJokes('पप्पू स्पेशल', 'pappu')"><i>👦</i><span>पप्पू</span></div>
+    <div class="card" onclick="openJokes('पति-पत्नी', 'couple')"><i>💍</i><span>पति-पत्नी</span></div>
+    <div class="card" onclick="openJokes('स्कूल मस्ती', 'school')"><i>🏫</i><span>स्कूल</span></div>
+    <div class="card" onclick="openJokes('डॉक्टर-मरीज', 'doctor')"><i>🩺</i><span>डॉक्टर</span></div>
+    <div class="card" onclick="openJokes('देसी तड़का', 'desi')"><i>🇮🇳</i><span>देसी</span></div>
+    <div class="card" onclick="openJokes('शराबी भाई', 'drunk')"><i>🍺</i><span>शराबी</span></div>
+    <div class="card" onclick="openJokes('कंजूस स्पेशल', 'miser')"><i>💰</i><span>कंजूस</span></div>
+    <div class="card holi-special" onclick="openJokes('होली स्पेशल', 'holi')">
+        <i>🎨</i><span>होली स्पेशल</span>
+    </div>
+    
+    
+   <div class="upload-section">
+    <h3>📸 Apna Joke Photo Upload Karein</h3>
+    
+    <label for="jokeUpload" class="upload-btn">📁 Photo Chunein</label>
+    <input type="file" id="jokeUpload" accept="image/*" style="display:none" onchange="handleUpload(event)">
+    
+    <div id="imagePreview" style="margin-top: 20px;">
+        </div>
 </div>
 
-            </div>
-        </div>
+
+</div>
+
 
         <footer style="text-align: center; padding: 40px 0; opacity: 0.5;">
             <p>&copy; 2026 Hanson aur Hansaon | Made with ❤️ for Smiles</p>
@@ -601,23 +726,171 @@
 
         // 3. NAVIGATION FUNCTIONS
         function openJokes(title, catKey) {
-            document.getElementById('jokesPage').style.display = 'block';
-            document.getElementById('catTitle').innerText = title;
-            const listDiv = document.getElementById('jokesList');
-            listDiv.innerHTML = "";
-            jokesData[catKey].forEach(joke => {
-                const card = document.createElement('div');
-                card.className = 'joke-card';
-                card.innerText = joke;
-                listDiv.appendChild(card);
-            });
-            window.scrollTo(0,0);
-        }
+    document.getElementById('jokesPage').style.display = 'block';
+    document.getElementById('catTitle').innerText = title;
+    const listDiv = document.getElementById('jokesList');
+    listDiv.innerHTML = "";
+
+    jokesData[catKey].forEach(joke => {
+        const card = document.createElement('div');
+        card.className = 'joke-card';
+        
+        // Joke Text
+        const textNode = document.createElement('div');
+        textNode.innerText = joke;
+        card.appendChild(textNode);
+
+        // Buttons Container
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'joke-actions';
+
+        // Copy Button
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'action-btn btn-copy';
+        copyBtn.innerHTML = '📋 Copy';
+        copyBtn.onclick = () => copyJoke(joke);
+
+        // WhatsApp Button
+        const waBtn = document.createElement('button');
+        waBtn.className = 'action-btn btn-whatsapp';
+        waBtn.innerHTML = '🟢 WhatsApp';
+        waBtn.onclick = () => shareWhatsApp(joke);
+
+        actionsDiv.appendChild(copyBtn);
+        actionsDiv.appendChild(waBtn);
+        card.appendChild(actionsDiv);
+        
+        listDiv.appendChild(card);
+    });
+    window.scrollTo(0,0);
+}
+
+// Utility Functions
+function copyJoke(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast("Joke copy ho gaya! ✅");
+    });
+}
+
+function shareWhatsApp(text) {
+    const url = "whatsapp://send?text=" + encodeURIComponent(text + "\n\nSent via Hanson aur Hansaon App 😍");
+    window.open(url, '_blank');
+}
+
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 2000);
+}
+
 
         function closeJokes() {
             document.getElementById('jokesPage').style.display = 'none';
         }
+        
+        // Image Upload handle karne ka function
+// Image UI par dikhane ke liye (Delete button ke saath)
+function displayImage(data, index) {
+    const preview = document.getElementById('imagePreview');
+    
+    // Wrapper banayein
+    const wrapper = document.createElement('div');
+    wrapper.className = 'img-wrapper';
+    wrapper.id = 'img-' + index;
+
+    // Image element
+    const img = document.createElement('img');
+    img.src = data;
+    img.className = 'user-img';
+
+    // Delete Button
+    const delBtn = document.createElement('button');
+    delBtn.className = 'delete-btn';
+    delBtn.innerHTML = '×';
+    delBtn.onclick = function() { deleteImage(index); };
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(delBtn);
+    preview.appendChild(wrapper);
+}
+
+// LocalStorage se delete karne ka logic
+function deleteImage(index) {
+    if(confirm("Kya aap is joke ko delete karna chahte hain?")) {
+        let savedImages = JSON.parse(localStorage.getItem('userJokes') || '[]');
+        
+        // Array se remove karein
+        savedImages.splice(index, 1);
+        
+        // Wapas save karein
+        localStorage.setItem('userJokes', JSON.stringify(savedImages));
+        
+        // UI refresh karein
+        renderAllImages();
+    }
+}
+
+// Saari images ko refresh karne ke liye
+function renderAllImages() {
+    const preview = document.getElementById('imagePreview');
+    preview.innerHTML = ""; // Purana saaf karein
+    
+    let savedImages = JSON.parse(localStorage.getItem('userJokes') || '[]');
+    savedImages.forEach((imgData, idx) => {
+        displayImage(imgData, idx);
+    });
+}
+
+// Handle Upload Update
+function handleUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageData = e.target.result;
+            
+            let savedImages = JSON.parse(localStorage.getItem('userJokes') || '[]');
+            savedImages.push(imageData);
+            localStorage.setItem('userJokes', JSON.stringify(savedImages));
+            
+            renderAllImages(); // UI update karein
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// Page load par images dikhayein
+window.addEventListener('DOMContentLoaded', () => {
+    // Purana disclaimer logic...
+    if (localStorage.getItem('disclaimerAccepted') === 'true') {
+        document.getElementById('disclaimerPage').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'block';
+    }
+    
+    // Images load karein
+    renderAllImages();
+});
+
+
+// LocalStorage mein save karne ka function (taaki refresh par na jaye)
+function saveImageToLocal(data) {
+    let savedImages = JSON.parse(localStorage.getItem('userJokes') || '[]');
+    savedImages.push(data);
+    localStorage.setItem('userJokes', JSON.stringify(savedImages));
+}
+
+// Page load hote hi purani photos load karein
+window.addEventListener('DOMContentLoaded', () => {
+    let savedImages = JSON.parse(localStorage.getItem('userJokes') || '[]');
+    savedImages.forEach(imgData => displayImage(imgData));
+});
+
+        
     </script>
+    
+    <div id="toast">Joke copy ho gaya! ✅</div>
+
 </body>
 </html>
 
