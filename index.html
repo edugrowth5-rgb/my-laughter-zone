@@ -82,6 +82,26 @@
             position: fixed; top: 15px; right: 15px; background: var(--accent);
             color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold;
         }
+
+/* Holi Special Tile Animation */
+.tile.holi-special {
+    background: linear-gradient(45deg, #ff4757, #ff9f43, #feca57, #48dbfb, #ff9ff3);
+    background-size: 400% 400%;
+    animation: gradientShift 5s ease infinite;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.tile.holi-special i { color: white; text-shadow: 0 0 10px rgba(0,0,0,0.3); }
+
+        
     </style>
 </head>
 <body>
@@ -119,6 +139,10 @@
                 <div class="card" onclick="openJokes('डॉक्टर-मरीज', 'doctor')"><i>🩺</i><span>डॉक्टर</span></div>
                 <div class="card" onclick="openJokes('देसी तड़का', 'desi')"><i>🇮🇳</i><span>देसी</span></div>
                 <div class="card" onclick="openJokes('शराबी भाई', 'drunk')"><i>🍺</i><span>शराबी</span></div>
+                <div class="tile holi-special" onclick="openJokes('होली स्पेशल', 'holi')">
+    <i>🎨</i><span>बुरा ना मानो होली है!</span>
+</div>
+
             </div>
         </div>
 
@@ -151,7 +175,6 @@
         }
 
         // 2. JOKES DATA
-        const jokesData = {
         const jokesData = {
             pappu: [
     "पप्पू: मम्मी, क्या मैं भगवान जैसा दिखता हूँ?\nमम्मी: नहीं बेटा, पर क्यों?\nपप्पू: क्योंकि मम्मी, मैं जहाँ भी जाता हूँ, सब यही कहते हैं- 'हे भगवान! तू फिर आ गया!' 🤣",
